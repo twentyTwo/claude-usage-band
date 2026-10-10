@@ -29,28 +29,41 @@ A tiny colorful band that sits right above the Claude Code prompt, always visibl
 
 > On the Claude desktop app the band may draw below the message box rather than above it. The slot is documented as above the prompt, and a mod has no option to change where the host places it.
 
-## Quick start
-
-```
-/plugin install usage-band --marketplace twentyTwo/claude-usage-band
-```
-
-Answer `y` to add the marketplace, pick the **user** scope, and the band appears in your next session. Details below.
-
 ## Install
 
-In a terminal Claude Code session:
+You need [Claude Code](https://claude.com/claude-code). Installing takes two steps: add this repo as a marketplace, then install the plugin from it.
+
+**1. Inside a Claude Code session**
 
 ```
-/plugin install usage-band --marketplace twentyTwo/claude-usage-band
+/plugin marketplace add twentyTwo/claude-usage-band
+/plugin install usage-band@claude-usage-band
 ```
 
-Answer `y` to add the marketplace, then pick the **user** scope so every session loads it. 
-
-Or, from a clone:
+**Or from a regular terminal**
 
 ```bash
-claude plugin marketplace add /path/to/claude-usage-band
+claude plugin marketplace add twentyTwo/claude-usage-band
+claude plugin install usage-band@claude-usage-band --scope user
+```
+
+**2. Reload**
+
+Run `/reload-plugins`, or start a new session. The band appears above the prompt.
+
+`--scope user` loads the band in every session. Leave it off to install for the current project only.
+
+### Update
+
+```bash
+claude plugin marketplace update claude-usage-band
+```
+
+### Install from a local clone
+
+```bash
+git clone https://github.com/twentyTwo/claude-usage-band
+claude plugin marketplace add ./claude-usage-band
 claude plugin install usage-band@claude-usage-band --scope user
 ```
 
