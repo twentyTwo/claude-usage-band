@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 498" width="860" height="498" role="img" aria-label="The usage band above the prompt: a context bar split by category, with 5-hour and 7-day limit meters, on the terminal and on the desktop app">
+<rect width="860" height="498" rx="12" fill="#161b22"/>
+<rect x="24" y="40" width="812" height="202" rx="10" fill="#0d1117" stroke="#30363d"/>
+<circle cx="44" cy="58" r="5" fill="#ff5f57"/><circle cx="62" cy="58" r="5" fill="#febc2e"/><circle cx="80" cy="58" r="5" fill="#28c840"/>
+<text x="430" y="63" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12" fill="#8b949e">Terminal</text>
+<text x="253.6" y="102" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">ctx</text>
+<circle cx="291.4" cy="97.2" r="3.5" fill="#d29922"/>
+<circle cx="299.8" cy="97.2" r="3.5" fill="#d29922"/>
+<circle cx="308.2" cy="97.2" r="3.5" fill="#d29922"/>
+<circle cx="316.6" cy="97.2" r="3.5" fill="#d29922"/>
+<circle cx="325.0" cy="97.2" r="3.5" fill="#d29922"/>
+<circle cx="333.4" cy="97.2" r="3.5" fill="#d29922"/>
+<circle cx="341.8" cy="97.2" r="3.5" fill="#d29922"/>
+<circle cx="350.2" cy="97.2" r="3" fill="none" stroke="#8b949e" stroke-width="1"/>
+<circle cx="358.6" cy="97.2" r="3" fill="none" stroke="#8b949e" stroke-width="1"/>
+<circle cx="367.0" cy="97.2" r="3" fill="none" stroke="#8b949e" stroke-width="1"/>
+<text x="379.6" y="102" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#d29922" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">68%</text>
+<text x="421.6" y="102" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#8b949e" textLength="75.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">136k/200k</text>
+<circle cx="115.0" cy="119.2" r="3.5" fill="#7F77DD"/>
+<text x="127.6" y="124" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">sys</text>
+<text x="161.2" y="124" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">4.2k</text>
+<circle cx="215.8" cy="119.2" r="3.5" fill="#378ADD"/>
+<text x="228.4" y="124" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#8b949e" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">tools</text>
+<text x="278.8" y="124" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3" font-weight="700" textLength="42.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">11.8k</text>
+<circle cx="341.8" cy="119.2" r="3.5" fill="#1D9E75"/>
+<text x="354.4" y="124" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">mcp</text>
+<text x="388.0" y="124" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">6.1k</text>
+<circle cx="442.6" cy="119.2" r="3.5" fill="#D4537E"/>
+<text x="455.2" y="124" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#8b949e" textLength="50.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">agents</text>
+<text x="514.0" y="124" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">1.3k</text>
+<circle cx="568.6" cy="119.2" r="3.5" fill="#EF9F27"/>
+<text x="581.2" y="124" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#8b949e" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">mem</text>
+<text x="614.8" y="124" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">3.4k</text>
+<circle cx="274.6" cy="141.2" r="3.5" fill="#D85A30"/>
+<text x="287.2" y="146" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#8b949e" textLength="50.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">skills</text>
+<text x="346.0" y="146" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">2.2k</text>
+<circle cx="400.6" cy="141.2" r="3.5" fill="#639922"/>
+<text x="413.2" y="146" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#8b949e" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">msgs</text>
+<text x="455.2" y="146" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3" font-weight="700" textLength="33.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">107k</text>
+<line x1="669.4" y1="98" x2="669.4" y2="140" stroke="#484f58" stroke-width="1"/>
+<text x="682.0" y="113" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#8b949e" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">5h</text>
+<circle cx="711.4" cy="108.2" r="4" fill="none" stroke="#2da44e" stroke-width="1"/><path d="M711.4 108.2 L711.4 104.2 A4 4 0 0 1 715.40 108.20 Z" fill="#2da44e"/>
+<text x="724.0" y="113" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#2da44e" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">34%</text>
+<text x="682.0" y="135" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#8b949e" textLength="16.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">7d</text>
+<circle cx="711.4" cy="130.2" r="4" fill="#e5534b"/>
+<text x="724.0" y="135" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e5534b" font-weight="700" textLength="25.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">88%</text>
+<line x1="94" y1="170" x2="766" y2="170" stroke="#484f58"/>
+<text x="94.0" y="192" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="14" fill="#e6edf3" font-weight="700" textLength="8.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve">❯</text>
+<rect x="110.8" y="179" width="8.4" height="17" fill="#8b949e"/>
+<line x1="94" y1="206" x2="766" y2="206" stroke="#484f58"/>
+<rect x="24" y="270" width="812" height="204" rx="10" fill="#1f1e1d" stroke="#3a3836"/>
+<text x="430" y="293" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8b949e">Desktop app</text>
+<text x="155.3" y="332" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">ctx</text>
+<clipPath id="bar"><rect x="184.0" y="323" width="200" height="10" rx="5"/></clipPath>
+<rect x="184.0" y="323" width="200" height="10" rx="5" fill="#8b8b8b" fill-opacity="0.25"/>
+<g clip-path="url(#bar)"><rect x="184.0" y="323" width="4.2" height="10" fill="#7F77DD"/><rect x="188.2" y="323" width="11.8" height="10" fill="#378ADD"/><rect x="200.0" y="323" width="6.1" height="10" fill="#1D9E75"/><rect x="206.1" y="323" width="1.5" height="10" fill="#D4537E"/><rect x="207.6" y="323" width="3.4" height="10" fill="#EF9F27"/><rect x="211.0" y="323" width="2.2" height="10" fill="#D85A30"/><rect x="213.2" y="323" width="107.0" height="10" fill="#639922"/></g>
+<text x="392.0" y="332" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#d29922" font-weight="600">68%</text>
+<text x="424.5" y="332" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">136k/200k</text>
+<circle cx="144.1" cy="353.5" r="4" fill="#7F77DD"/>
+<text x="155.1" y="358" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">sys</text>
+<text x="180.8" y="358" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e6edf3" font-weight="600">4.2k</text>
+<circle cx="228.2" cy="353.5" r="4" fill="#378ADD"/>
+<text x="239.2" y="358" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">tools</text>
+<text x="275.4" y="358" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e6edf3" font-weight="600">11.8k</text>
+<circle cx="330.4" cy="353.5" r="4" fill="#1D9E75"/>
+<text x="341.4" y="358" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">mcp</text>
+<text x="370.8" y="358" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e6edf3" font-weight="600">6.1k</text>
+<circle cx="418.1" cy="353.5" r="4" fill="#D4537E"/>
+<text x="429.1" y="358" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">agents</text>
+<text x="475.5" y="358" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e6edf3" font-weight="600">1.3k</text>
+<circle cx="191.1" cy="375.5" r="4" fill="#EF9F27"/>
+<text x="202.1" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">mem</text>
+<text x="235.2" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e6edf3" font-weight="600">3.4k</text>
+<circle cx="282.5" cy="375.5" r="4" fill="#D85A30"/>
+<text x="293.5" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">skills</text>
+<text x="330.0" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e6edf3" font-weight="600">2.2k</text>
+<circle cx="377.4" cy="375.5" r="4" fill="#639922"/>
+<text x="388.4" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#8b949e">msgs</text>
+<text x="424.7" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e6edf3" font-weight="600">107k</text>
+<line x1="529.9" y1="332" x2="529.9" y2="372" stroke="#484f58"/>
+<circle cx="573.9" cy="352" r="13" fill="none" stroke="#8b8b8b" stroke-opacity="0.25" stroke-width="6"/>
+<circle cx="573.9" cy="352" r="13" fill="none" stroke="#2da44e" stroke-width="6" stroke-linecap="round" stroke-dasharray="27.77 81.68" transform="rotate(-90 573.9 352)"/>
+<text x="597.9" y="349" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8b949e">5h</text>
+<text x="597.9" y="365" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#2da44e" font-weight="600">34%</text>
+<circle cx="665.9" cy="352" r="13" fill="none" stroke="#8b8b8b" stroke-opacity="0.25" stroke-width="6"/>
+<circle cx="665.9" cy="352" r="13" fill="none" stroke="#e5534b" stroke-width="6" stroke-linecap="round" stroke-dasharray="71.88 81.68" transform="rotate(-90 665.9 352)"/>
+<text x="689.9" y="349" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#8b949e">7d</text>
+<text x="689.9" y="365" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" fill="#e5534b" font-weight="600">88%</text>
+<rect x="64" y="404" width="732" height="46" rx="12" fill="#2b2a28" stroke="#45423f"/>
+<text x="82.0" y="432" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#77736e">Reply to Claude…</text>
+</svg>

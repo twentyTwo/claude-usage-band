@@ -1,6 +1,10 @@
-# usage-band
+# claude-usage-band
 
 A Claude Code mod that draws a small, colorful band directly above the prompt box:
+
+![The band on the terminal and on the desktop app](docs/preview.svg)
+
+<sub>Drawn from the mod's own layout with sample figures.</sub>
 
 - **ctx**: the context window as one segmented bar, split by what fills it (system prompt, tools, MCP tools, agents, memory files, skills, messages), with the percent and `used/window` tokens, and a chip per category with its token count.
 - **5h** and **7d**: the 5-hour and 7-day rate-limit windows as pies on the right.
@@ -16,7 +20,7 @@ On the terminal the pies and bar become text (`●●●●○○○○○○`, 
 In a terminal Claude Code session:
 
 ```
-/plugin install usage-band --marketplace twentyTwo/usage-band
+/plugin install usage-band --marketplace twentyTwo/claude-usage-band
 ```
 
 Answer `y` to add the marketplace, then pick the **user** scope so every session loads it. 
@@ -24,11 +28,18 @@ Answer `y` to add the marketplace, then pick the **user** scope so every session
 Or, from a clone:
 
 ```bash
-claude plugin marketplace add /path/to/usage-band
-claude plugin install usage-band@usage-band --scope user
+claude plugin marketplace add /path/to/claude-usage-band
+claude plugin install usage-band@claude-usage-band --scope user
 ```
 
 Run `/reload-plugins` after editing the files.
+
+## Uninstall
+
+```bash
+claude plugin uninstall usage-band@claude-usage-band --scope user
+claude plugin marketplace remove claude-usage-band
+```
 
 ## Settings
 
@@ -39,7 +50,7 @@ Run `/reload-plugins` after editing the files.
 | `fiveHourColor` | `#f85149` | 5h color in `fixed` mode |
 | `sevenDayColor` | `#2da44e` | 7d color in `fixed` mode |
 
-Change them with `/plugin configure usage-band@usage-band`.
+Change them with `/plugin configure usage-band@claude-usage-band`.
 
 ## How it works
 
