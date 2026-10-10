@@ -1,19 +1,41 @@
 # claude-usage-band
 
-A Claude Code mod that draws a small, colorful band directly above the prompt box:
+**See what's eating your context window, and how close you are to your limits, without ever typing `/context` or `/usage`.**
 
-![The band on the terminal and on the desktop app](docs/preview.svg)
+A tiny colorful band that sits right above the Claude Code prompt, always visible, on both the terminal and the desktop app.
 
-<sub>Drawn from the mod's own layout with sample figures.</sub>
+![claude-usage-band on the desktop app and the terminal, light and dark](docs/preview.png)
 
-- **ctx**: the context window as one segmented bar, split by what fills it (system prompt, tools, MCP tools, agents, memory files, skills, messages), with the percent and `used/window` tokens, and a chip per category with its token count.
-- **5h** and **7d**: the 5-hour and 7-day rate-limit windows as pies on the right.
+<sub>Sample figures, drawn from the mod's own layout.</sub>
 
-Colors follow the percentage (green, amber, red) or stay fixed per meter, your choice. `--` means there is no reading yet. The band steps aside while a survey is showing.
+## Why you'll want it
 
-On the terminal the pies and bar become text (`●●●●○○○○○○`, `◔ ◑ ◕`); on the desktop app they are drawn as SVG.
+- **Know before it's too late.** Watch the context bar fill up and compact or start fresh before quality drops, not after.
+- **See *what* is using your context.** One bar split into system prompt, tools, MCP tools, agents, memory files, skills and messages, each with its token count. Spot the bloated MCP server at a glance.
+- **Never get surprised by a rate limit.** 5-hour and 7-day usage sit next to the prompt as small pies.
+- **Zero cost.** Estimates are computed locally. No extra tokens, no network calls.
+- **Looks right everywhere.** SVG meters on the desktop app, clean text meters (`●●●●○○○○○`, `◔ ◑ ◕`) in the terminal, light and dark.
+- **Your colors.** Meters turn green, amber or red with the percentage, or keep a fixed color you choose.
+
+## What you get
+
+| Meter | Shows |
+| --- | --- |
+| **ctx** | Context window as a segmented bar, the percent, `used/window` tokens, and a chip per category |
+| **5h** | Usage of the 5-hour rate-limit window |
+| **7d** | Usage of the 7-day rate-limit window |
+
+`--` means there is no reading yet. The band steps aside while a survey is showing.
 
 > On the Claude desktop app the band may draw below the message box rather than above it. The slot is documented as above the prompt, and a mod has no option to change where the host places it.
+
+## Quick start
+
+```
+/plugin install usage-band --marketplace twentyTwo/claude-usage-band
+```
+
+Answer `y` to add the marketplace, pick the **user** scope, and the band appears in your next session. Details below.
 
 ## Install
 

@@ -1,7 +1,7 @@
 {
   "name": "usage-band",
   "version": "0.2.0",
-  "description": "One-line band above the prompt: context, 5-hour and 7-day usage as small colored dot meters.",
+  "description": "Always-visible band above the Claude Code prompt: see what fills your context window (system, tools, MCP, memory, skills, messages) plus 5-hour and 7-day limits. Free, local, terminal and desktop.",
   "types": "./types/index.d.ts",
   "userConfig": {
     "colorMode": {
