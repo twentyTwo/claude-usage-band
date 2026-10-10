@@ -1,0 +1,18 @@
+{
+  "name": "usage-band",
+  "version": "0.2.0",
+  "description": "One-line band above the prompt: context, 5-hour and 7-day usage as small colored dot meters.",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "colorMode": {
+      "type": "string",
+      "title": "Color mode",
+      "description": "level: each meter turns green, amber or red with its percentage. fixed: each meter keeps its own color.",
+      "default": "level",
+      "options": ["level", "fixed"]
+    },
+    "contextColor": { "type": "string", "title": "Context color (fixed mode)", "description": "Hex color, e.g. #f0883e", "default": "#f0883e" },
+    "fiveHourColor": { "type": "string", "title": "5-hour color (fixed mode)", "description": "Hex color, e.g. #f85149", "default": "#f85149" },
+    "sevenDayColor": { "type": "string", "title": "7-day color (fixed mode)", "description": "Hex color, e.g. #2da44e", "default": "#2da44e" }
+  }
+}
