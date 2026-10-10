@@ -31,7 +31,9 @@ A tiny colorful band that sits right above the Claude Code prompt, always visibl
 
 ## Install
 
-You need [Claude Code](https://claude.com/claude-code). Installing takes two steps: add this repo as a marketplace, then install the plugin from it.
+You need a recent [Claude Code](https://claude.com/claude-code). Built and tested on **2.1.296**; on an older build (2.1.274, for example) the plugin installs but the band does not appear. Check with `claude --version` and update with `claude update`.
+
+Installing takes two steps: add this repo as a marketplace, then install the plugin from it.
 
 **1. Inside a Claude Code session**
 
