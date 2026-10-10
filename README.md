@@ -16,10 +16,10 @@ On the terminal the pies and bar become text (`●●●●○○○○○○`, 
 In a terminal Claude Code session:
 
 ```
-/plugin install usage-band --marketplace <owner>/usage-band
+/plugin install usage-band --marketplace twentyTwo/usage-band
 ```
 
-Answer `y` to add the marketplace, then pick the **user** scope so every session loads it. Replace `<owner>` with the GitHub account that hosts this repository.
+Answer `y` to add the marketplace, then pick the **user** scope so every session loads it. 
 
 Or, from a clone:
 
