@@ -1,4 +1,4 @@
-import { test, expect } from 'claude-code/testing'
+import { test, expect, mock } from 'claude-code/testing'
 
 const props = { hasSurface: false, hasSurvey: false, isWorking: false, maxRows: 5, bodyColumns: 80, scroll: { bodyRows: 4 }, view: {} } as any
 
@@ -75,6 +75,31 @@ test('a million-token window reads as 1M', async ($, on) => {
   await ($ as any).session.measure({ ...reading, context: { percent: 15, tokens: 147000, window: 1000000 } })
   const ui = await $.ui.mount({ plugin: 'usage-band', surface: 'terminal', component: 'AbovePrompt', props })
   expect(await shown(ui)).toContain('147k/1M')
+  await ui.unmount()
+})
+
+test('a reading without rate limits keeps the last 5h and 7d figures', async ($, on) => {
+  wire($, on)
+  await ($ as any).session.measure(reading)
+  await ($ as any).session.measure({ ...reading, context: { percent: 50, tokens: 100000, window: 200000 }, rateLimits: [], changed: ['context'] })
+  const ui = await $.ui.mount({ plugin: 'usage-band', surface: 'terminal', component: 'AbovePrompt', props })
+  const t = await shown(ui)
+  for (const s of ['50%', '23%', '8%']) expect(t).toContain(s)
+  await ui.unmount()
+})
+
+test('a new session starts with the limits saved by the last one', async ($, on) => {
+  on('session.measure', (_$: any, e: any) => ({ changed: e.changed }))
+  mock.store(on)
+  mock.clock(on)
+  on('session.start', (_$: any, e: any) => ({ cwd: e.cwd }))
+  on('session.usage', () => ({ value: { startedAt: 0, context: { window: 200000 }, rateLimits: [] } }))
+  on('ui.render', engineBand as any)
+  await ($ as any).session.measure(reading)
+  await ($ as any).session.start({ cwd: '/', surface: 'terminal', isInteractive: true })
+  const ui = await $.ui.mount({ plugin: 'usage-band', surface: 'terminal', component: 'AbovePrompt', props })
+  const t = await shown(ui)
+  for (const s of ['23%', '8%']) expect(t).toContain(s)
   await ui.unmount()
 })
 

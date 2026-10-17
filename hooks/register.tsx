@@ -5,19 +5,36 @@ import type { Slice, Usage } from '../types'
 const empty: Usage = { context: null, fiveHour: null, sevenDay: null, tokens: null, window: null, detail: [] }
 const usage = atom({ plugin: 'usage-band', key: 'usage' } as const, empty)
 
+type Limit = { kind: string; percentUsed: number; resetsAt?: string }
 type Snapshot = {
   context: { percent?: number; tokens?: number; window?: number }
-  rateLimits: { kind: string; percentUsed: number }[]
+  rateLimits: Limit[]
 }
 
-const toUsage = (s: Snapshot, detail: Slice[]): Usage => ({
+// A window missing from the reading keeps the figure it had: rate limits only arrive with a response.
+const toUsage = (s: Snapshot, detail: Slice[], prev: Usage = empty): Usage => ({
   context: s.context.percent ?? null,
-  fiveHour: s.rateLimits.find(r => r.kind === 'five_hour')?.percentUsed ?? null,
-  sevenDay: s.rateLimits.find(r => r.kind === 'seven_day')?.percentUsed ?? null,
+  fiveHour: s.rateLimits.find(r => r.kind === 'five_hour')?.percentUsed ?? prev.fiveHour,
+  sevenDay: s.rateLimits.find(r => r.kind === 'seven_day')?.percentUsed ?? prev.sevenDay,
   tokens: s.context.tokens ?? null,
   window: s.context.window ?? null,
   detail
 })
+
+// The last limits seen, kept across sessions so a new one starts with figures instead of --.
+const LIMITS_KEY = 'limits'
+
+const savedLimits = async ($: any): Promise<Limit[]> => {
+  try {
+    const saved = (await $.store.get(LIMITS_KEY)) as Limit[] | undefined
+    if (!Array.isArray(saved)) return []
+    const now = await $.clock.now()
+    // A window that has reset since it was saved no longer says anything.
+    return saved.filter(r => !r.resetsAt || Date.parse(r.resetsAt) > now)
+  } catch {
+    return []
+  }
+}
 
 const fmt = (n: number | null) => (n === null ? '--' : `${Math.round(n)}%`)
 const clamp = (n: number) => Math.max(0, Math.min(100, n))
@@ -152,14 +169,18 @@ export const register: Register = (on, options) => {
   const tone = makePalette(options as Record<string, unknown>)
 
   on('session.start', async ($, e, next) => {
-    const [snap, detail] = await Promise.all([$.session.usage(), fetchDetail($)])
-    await update($, usage, () => toUsage(snap, detail))
+    const [snap, detail, saved] = await Promise.all([$.session.usage(), fetchDetail($), savedLimits($)])
+    const rateLimits = snap.rateLimits.length > 0 ? snap.rateLimits : saved
+    await update($, usage, () => toUsage({ ...snap, rateLimits }, detail))
     return next(e)
   })
 
   on('session.measure', async ($, e, next) => {
     const detail = e.changed.includes('context') ? await fetchDetail($) : null
-    await update($, usage, prev => toUsage(e, detail ?? prev.detail))
+    await update($, usage, prev => toUsage(e, detail ?? prev.detail, prev))
+    if (e.changed.includes('rateLimits') && e.rateLimits.length > 0) {
+      await $.store.set(LIMITS_KEY, e.rateLimits).catch(() => {})
+    }
     return next(e)
   })
 
