@@ -78,9 +78,33 @@ const fetchDetail = async ($: any): Promise<Slice[]> => {
 }
 
 const tk = (t: number) =>
-  t >= 100000 ? `${Math.round(t / 1000)}k` : t >= 1000 ? `${(t / 1000).toFixed(1).replace(/\.0$/, '')}k` : `${t}`
+  t >= 1000000
+    ? `${(t / 1000000).toFixed(1).replace(/\.0$/, '')}M`
+    : t >= 100000
+      ? `${Math.round(t / 1000)}k`
+      : t >= 1000
+        ? `${(t / 1000).toFixed(1).replace(/\.0$/, '')}k`
+        : `${t}`
 const colorOf = (key: string) => CATS.find(c => c.key === key)?.color ?? GREY
 const labelOf = (key: string) => CATS.find(c => c.key === key)?.label ?? key
+
+// Columns one terminal chip takes: its margins, "● ", the label, a space and the figure.
+const chipWidth = (s: Slice) => 2 + 2 + labelOf(s.key).length + 1 + tk(s.tokens).length
+// Columns the divider and the stacked limits take on the terminal ("7d ◔ 100%" at widest).
+const LIMITS_WIDTH = 3 + 9
+
+// The chips that fit on one line, largest first; the rest are dropped and the drawing order is kept.
+const fitChips = (detail: Slice[], budget: number): Slice[] => {
+  const keep = new Set<string>()
+  let used = 0
+  for (const s of [...detail].sort((a, b) => b.tokens - a.tokens)) {
+    const w = chipWidth(s)
+    if (used + w > budget) continue
+    keep.add(s.key)
+    used += w
+  }
+  return detail.filter(s => keep.has(s.key))
+}
 
 const barSvg = (u: Usage, w: number, h: number) => {
   const total = u.window && u.window > 0 ? u.window : u.detail.reduce((a, s) => a + s.tokens, 0) || 1
@@ -185,7 +209,9 @@ export const register: Register = (on, options) => {
       </Text>
     )
 
-    const chips = u.detail.map(s => (
+    // The terminal keeps the chips to one line beside the limits; the desktop shows them all.
+    const shownDetail = isDesktop ? u.detail : fitChips(u.detail, e.props.bodyColumns - LIMITS_WIDTH)
+    const chips = shownDetail.map(s => (
       <Box key={s.key} marginX={1}>
         {isDesktop ? (
           <Svg source={dotSvg(colorOf(s.key))} alt={labelOf(s.key)} width={10} height={10} />
@@ -208,7 +234,7 @@ export const register: Register = (on, options) => {
     // The whole group is centered across the band's width; the divider splits context from the limits.
     return (
       <Box width={e.props.bodyColumns} justifyContent="center" alignItems="center">
-        <Box flexDirection="column" alignItems="center" flexShrink={1}>
+        <Box flexDirection="column" alignItems="center" flexShrink={1} overflow="hidden">
           <Box alignItems="center">
             <Text dimColor>ctx </Text>
             {meter}
@@ -216,19 +242,21 @@ export const register: Register = (on, options) => {
             {size ? <Text dimColor>  {size}</Text> : null}
           </Box>
           {chips.length > 0 ? (
-            <Box flexWrap="wrap" justifyContent="center">
+            <Box flexWrap="nowrap" justifyContent="center">
               {chips}
             </Box>
           ) : null}
         </Box>
-        <Box marginX={isDesktop ? 2 : 1}>{divider}</Box>
+        <Box marginX={isDesktop ? 2 : 1} flexShrink={0}>
+          {divider}
+        </Box>
         {isDesktop ? (
-          <Box alignItems="center">
+          <Box alignItems="center" flexShrink={0}>
             {limit('fiveHour', '5h')}
             <Box marginLeft={2}>{limit('sevenDay', '7d')}</Box>
           </Box>
         ) : (
-          <Box flexDirection="column">
+          <Box flexDirection="column" flexShrink={0}>
             {limit('fiveHour', '5h')}
             {limit('sevenDay', '7d')}
           </Box>

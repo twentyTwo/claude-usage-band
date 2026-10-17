@@ -49,7 +49,7 @@ test('after a measure the band shows the figures and every category chip', async
   wire($, on)
   await ($ as any).session.measure(reading)
   for (const surface of ['terminal', 'desktop'] as const) {
-    const ui = await $.ui.mount({ plugin: 'usage-band', surface, component: 'AbovePrompt', props })
+    const ui = await $.ui.mount({ plugin: 'usage-band', surface, component: 'AbovePrompt', props: { ...props, bodyColumns: 140 } })
     const t = await shown(ui)
     for (const s of ['42%', '23%', '8%', '84k/200k', 'sys', 'tools', 'mcp', 'agents', 'mem', 'skills', 'msgs', '55k', '11.8k'])
       expect(t).toContain(s)
@@ -57,6 +57,25 @@ test('after a measure the band shows the figures and every category chip', async
     expect(t).toContain(surface === 'desktop' ? 'Svg' : '●')
     await ui.unmount()
   }
+})
+
+test('a narrow terminal drops the smallest chips and keeps the rest on one line', async ($, on) => {
+  wire($, on)
+  await ($ as any).session.measure(reading)
+  const ui = await $.ui.mount({ plugin: 'usage-band', surface: 'terminal', component: 'AbovePrompt', props: { ...props, bodyColumns: 60 } })
+  const t = await shown(ui)
+  for (const s of ['msgs', 'tools', '23%', '8%']) expect(t).toContain(s)
+  for (const s of ['agents', 'skills']) expect(t).not.toContain(s)
+  expect(t).not.toContain('"flexWrap":"wrap"')
+  await ui.unmount()
+})
+
+test('a million-token window reads as 1M', async ($, on) => {
+  wire($, on)
+  await ($ as any).session.measure({ ...reading, context: { percent: 15, tokens: 147000, window: 1000000 } })
+  const ui = await $.ui.mount({ plugin: 'usage-band', surface: 'terminal', component: 'AbovePrompt', props })
+  expect(await shown(ui)).toContain('147k/1M')
+  await ui.unmount()
 })
 
 test('band yields to a survey', async ($, on) => {
