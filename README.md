@@ -1,29 +1,34 @@
 # claude-usage-band
 
-**See what's eating your context window, and how close you are to your limits, without ever typing `/context` or `/usage`.**
+**Know how close you are to your 5-hour and 7-day limits, and whether you're on pace, without ever typing `/usage`.**
 
-A tiny colorful band that sits right above the Claude Code prompt, always visible, on both the terminal and the desktop app.
+A slim band that sits right above the Claude Code prompt, always visible, on the terminal and the desktop app. Context usage is left to Claude Code, which now shows it natively.
 
 ![claude-usage-band on the desktop app and the terminal, light and dark](docs/preview.png)
 
-<sub>Sample figures, drawn from the mod's own layout.</sub>
+<sub>Sample figures, drawn from the mod's own layout. The preview still shows the earlier design.</sub>
 
 ## Why you'll want it
 
-- **Know before it's too late.** Watch the context bar fill up and compact or start fresh before quality drops, not after.
-- **See *what* is using your context.** One bar split into system prompt, tools, MCP tools, agents, memory files, skills and messages, each with its token count. Spot the bloated MCP server at a glance.
-- **Never get surprised by a rate limit.** 5-hour and 7-day usage sit next to the prompt as small pies.
-- **Zero cost.** Estimates are computed locally. No extra tokens, no network calls.
-- **Looks right everywhere.** SVG meters on the desktop app, clean text meters (`●●●●○○○○○`, `◔ ◑ ◕`) in the terminal, light and dark.
-- **Your colors.** Meters turn green, amber or red with the percentage, or keep a fixed color you choose.
+- **Never get surprised by a rate limit.** 5-hour and 7-day usage sit next to the prompt, one row.
+- **See if you're on pace.** Under each usage bar a thin bar shows how much of the window's time has passed. Usage ahead of time means you'll likely hit the limit before it resets.
+- **Know when it resets.** Each limit counts down to its reset: `10m`, `3h12m`, `2d5h`.
+- **Zero cost.** Read from what Claude Code already reports. No extra tokens, no network calls.
+- **Looks right everywhere.** SVG bars on the desktop app, stacked on a phone, one line of dots (`●●●●○○○○○│○`) in the terminal.
 
 ## What you get
 
-| Meter | Shows |
+```
+5h ▇▇▇▇▇░░░░░  41%  97% of time gone · resets in 10m  │  7d ▇▇▇▇▇▇▇▇░░  78%  95% of time gone · resets in 8h40m
+```
+
+| Part | Shows |
 | --- | --- |
-| **ctx** | Context window as a segmented bar, the percent, `used/window` tokens, and a chip per category |
-| **5h** | Usage of the 5-hour rate-limit window |
-| **7d** | Usage of the 7-day rate-limit window |
+| Usage bar | Percent of the limit used, green below 60%, amber to 85%, red above |
+| Time bar (thin, grey) | Percent of the window's time already passed |
+| Words | The same time in text, and the countdown to the reset |
+
+In the terminal the line reads `5h ●●●●○○○○○│○  41% · 97% gone · 10m`, the `│` marking the time gone. A narrow terminal drops `97% gone` first, then the countdown.
 
 `--` means there is no reading yet. The band steps aside while a survey is showing.
 
@@ -82,16 +87,16 @@ claude plugin marketplace remove claude-usage-band
 
 | Setting | Default | What it does |
 | --- | --- | --- |
-| `colorMode` | `level` | `level`: each meter turns green below 60%, amber to 85%, red above. `fixed`: each meter keeps its own color. |
-| `contextColor` | `#f0883e` | ctx color in `fixed` mode |
+| `colorMode` | `level` | `level`: each limit turns green below 60%, amber to 85%, red above. `fixed`: each limit keeps its own color. |
 | `fiveHourColor` | `#f85149` | 5h color in `fixed` mode |
 | `sevenDayColor` | `#2da44e` | 7d color in `fixed` mode |
+| `terminalGlyphs` | `unicode` | `ascii` draws the terminal line with `#`, `-` and `|`, for fonts that draw `●` `○` `│` double-width |
 
 Change them with `/plugin configure usage-band@claude-usage-band`.
 
 ## How it works
 
-`hooks/register.tsx` reads `$.session.usage()` at session start and the `session.measure` event after that. When the context figure changes it asks `$.session.usage({ breakdown: 'summary' })`, which estimates locally and costs nothing, and groups the rows of the breakdown by name. A `ui.render` hook on the `AbovePrompt` component draws the band from that state.
+`hooks/register.tsx` reads the rate limits from `$.session.usage()` at session start and from the `session.measure` event after that, and keeps the last ones in the plugin's store so a new session starts with figures. A one-minute clock moves the countdowns on. A `ui.render` hook on the `AbovePrompt` component draws the band from that state.
 
 ## Develop
 
