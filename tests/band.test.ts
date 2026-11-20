@@ -73,12 +73,12 @@ test('the band shows no context figures any more', async ($, on) => {
   }
 })
 
-test('desktop: one row, percent, time gone and countdown, with a hairline between', async ($, on) => {
+test('desktop: one padded row, percent, time gone and countdown, with a hairline between', async ($, on) => {
   wire($, on)
   await ($ as any).session.measure(normal)
   const ui = await mount($, 'desktop')
   const t = await shown(ui)
-  for (const s of ['41%', '78%', '97% of time gone · resets in 10m', '95% of time gone · resets in 8h40m', '│', '"type":"Svg"'])
+  for (const s of ['41%', '78%', '"97% gone · resets in 10m"', '"95% gone · resets in 8h40m"', '"paddingX":2', '│', '"type":"Svg"'])
     expect(t).toContain(s)
   expect(t).toContain('5-hour limit: 41% used, 97% of time gone · resets in 10m')
   expect(t).toContain('#2da44e')
@@ -91,7 +91,7 @@ test('desktop danger: red 5h ahead of pace, days and hours for 7d', async ($, on
   await ($ as any).session.measure(danger)
   const ui = await mount($, 'desktop')
   const t = await shown(ui)
-  for (const s of ['88%', '#e5534b', '36% of time gone · resets in 3h12m', '68% of time gone · resets in 2d5h']) expect(t).toContain(s)
+  for (const s of ['88%', '#e5534b', '36% gone · resets in 3h12m', '68% gone · resets in 2d5h']) expect(t).toContain(s)
   await ui.unmount()
 })
 

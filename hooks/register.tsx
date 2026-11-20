@@ -183,30 +183,39 @@ export const register: Register = (on, options) => {
       // The phone stacks the two limits; the desktop keeps them on one row with a hairline between.
       const isPhone = e.surface === 'mobile'
       const W = isPhone ? 100 : 96
+      // Each part of a limit gets its own gap, so the label, bars, percent and words don't run together.
+      // The words are the short form: the full one ran the row into the card's edges.
       const limit = (v: View) => (
         <Box key={v.label} alignItems="center" flexShrink={0}>
-          <Text dimColor>{v.label} </Text>
-          <Svg
-            source={barsSvg(v, W)}
-            alt={`${v.name} limit: ${v.used === null ? 'no reading yet' : `${v.used}% used`}${v.left ? `, ${words(v, false)}` : ''}`}
-            width={W}
-            height={BAR_H}
-          />
-          <Text bold color={v.used === null ? undefined : v.color} dimColor={v.used === null}>
-            {' '}
-            {pctText(v).padStart(4)}
-          </Text>
-          {v.left ? <Text dimColor> {words(v, isPhone)}</Text> : null}
+          <Text dimColor>{v.label}</Text>
+          <Box marginLeft={1}>
+            <Svg
+              source={barsSvg(v, W)}
+              alt={`${v.name} limit: ${v.used === null ? 'no reading yet' : `${v.used}% used`}${v.left ? `, ${words(v, false)}` : ''}`}
+              width={W}
+              height={BAR_H}
+            />
+          </Box>
+          <Box marginLeft={1}>
+            <Text bold color={v.used === null ? undefined : v.color} dimColor={v.used === null}>
+              {pctText(v)}
+            </Text>
+          </Box>
+          {v.left ? (
+            <Box marginLeft={1}>
+              <Text dimColor>{words(v, true)}</Text>
+            </Box>
+          ) : null}
         </Box>
       )
       return isPhone ? (
-        <Box width={e.props.bodyColumns} flexDirection="column">
+        <Box width={e.props.bodyColumns} flexDirection="column" paddingX={1} paddingY={1}>
           {views.map(limit)}
         </Box>
       ) : (
-        <Box width={e.props.bodyColumns} justifyContent="center" alignItems="center">
+        <Box width={e.props.bodyColumns} justifyContent="center" alignItems="center" paddingX={2} paddingY={1}>
           {limit(views[0])}
-          <Box marginX={1} flexShrink={0}>
+          <Box marginX={3} flexShrink={0}>
             <Text color="subtle">│</Text>
           </Box>
           {limit(views[1])}
