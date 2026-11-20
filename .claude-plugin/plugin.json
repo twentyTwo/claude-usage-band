@@ -1,7 +1,7 @@
 {
   "name": "usage-band",
-  "version": "0.3.0",
-  "description": "Always-visible band above the Claude Code prompt: your 5-hour and 7-day limits, how much of each window has passed, and when each resets. Free, local, terminal and desktop.",
+  "version": "0.4.0",
+  "description": "Always-visible band above the Claude Code prompt: your 5-hour limit as one big number with a run-out forecast, and your 7-day limit against an even pace. Free, local, terminal and desktop.",
   "types": "./types/index.d.ts",
   "userConfig": {
     "colorMode": {
@@ -29,7 +29,7 @@
     "terminalGlyphs": {
       "type": "string",
       "title": "Terminal glyphs",
-      "description": "unicode: ● ○ │ dots. ascii: # - | for terminals that draw those symbols double-width.",
+      "description": "unicode: █ ░ │ ✓ ⚠. ascii: # - | ok ! for terminals that draw those symbols double-width.",
       "default": "unicode",
       "options": [
         "unicode",
