@@ -1,12 +1,12 @@
-export type Slice = { key: string; tokens: number }
-
 export type Usage = {
-  context: number | null
+  /** Percent used of the 5-hour and 7-day windows. */
   fiveHour: number | null
   sevenDay: number | null
-  tokens: number | null
-  window: number | null
-  detail: Slice[]
+  /** When each window resets, in epoch milliseconds. */
+  fiveHourResetsAt: number | null
+  sevenDayResetsAt: number | null
+  /** The time the countdowns are measured from, moved on every minute. */
+  now: number | null
 }
 
 declare module 'claude-code' {
