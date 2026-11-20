@@ -6,7 +6,7 @@ A slim band that sits right above the Claude Code prompt, always visible, on the
 
 ![claude-usage-band on the desktop app and the terminal, light and dark](docs/preview.png)
 
-<sub>Sample figures, drawn from the mod's own layout. The preview still shows the earlier design.</sub>
+<sub>Sample figures, drawn from the mod's own layout: the 5-hour limit at 72% and on course to fill before its reset, the 7-day limit at 34% against 52% expected by now.</sub>
 
 ## Why you'll want it
 
@@ -19,7 +19,7 @@ A slim band that sits right above the Claude Code prompt, always visible, on the
 ## What you get
 
 ```
-5h  72% full by ~1:48 PM    │  7d █████░░░│░░░░░░░░  34% · expected 52% ✓
+5h  72% full by ~1:48 PM   │  7d █████░░░│░░░░░░░░  34% · expected 52% ✓
 ```
 
 | Part | Shows |
@@ -38,6 +38,24 @@ A narrow terminal drops `expected 52%` first, then the 5-hour note. The ✓ / �
 ## Install
 
 You need a recent [Claude Code](https://claude.com/claude-code). Built and tested on **2.1.296**; on an older build (2.1.274, for example) the plugin installs but the band does not appear. Check with `claude --version` and update with `claude update`.
+
+### The easy way: ask Claude
+
+Paste this into any Claude Code session (terminal, desktop app or VS Code) and let Claude do it:
+
+```
+Install the usage-band plugin from https://github.com/twentyTwo/claude-usage-band for my user.
+First check `claude --version` is 2.1.296 or newer and run `claude update` if it isn't.
+Then run `claude plugin marketplace add twentyTwo/claude-usage-band` and
+`claude plugin install usage-band@claude-usage-band --scope user`,
+and confirm with `claude plugin list` that it is enabled.
+```
+
+When Claude is done, run `/reload-plugins` yourself (Claude can't run slash commands for you). The band appears above the prompt.
+
+To update or remove it later, ask the same way: *"Update the usage-band plugin"* or *"Uninstall the usage-band plugin and remove its marketplace"*.
+
+### By hand
 
 Installing takes two steps: add this repo as a marketplace, then install the plugin from it.
 
